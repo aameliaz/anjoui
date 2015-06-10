@@ -57,8 +57,8 @@
 
 
               <ul class="dropdown-menu">
-              <% @dish.max_guests.times do %>
-              <li><a href="#">Dropdown link</a></li>         
+              <% @dish.max_guests.times do |index| %>
+              <li> <%= index+1 %></a></li>         
                 <% end %>
                 </ul> 
             </div>            

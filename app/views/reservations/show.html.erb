@@ -12,15 +12,14 @@
             <dl class="dl-horizontal">
 
 
-          <dt>Profile</dt>
-          <dd><%= @reservation.profile %></dd>
+<!--           <dt>Profile</dt>
+          <dd><%= @reservation.profile %></dd> -->
+          <dt>Dish name</dt>
+          <dd><%= @reservation.dish.dish_name %></dd>
 
           <dt>Photo</dt>
           <dd><img src="<%= @reservation.dish.photo %>" width="100%" height="100%"></dd>
           
-          <dt>Dish</dt>
-          <dd><%= @reservation.dish.dish_name %></dd>
-
           <dt>Cuisine</dt>
           <dd><%= @reservation.dish.cuisine_type %></dd>
 
