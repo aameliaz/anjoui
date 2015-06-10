@@ -1,0 +1,91 @@
+<!-- Validation failure messages -->
+
+<% if @reservation.errors.any? %>
+  <% @reservation.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit Reservation #<%= @reservation.id %></h3>
+      </div>
+      <div class="panel-body">
+        <form action="/update_reservation/<%= @reservation.id %>" method="post" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for status -->
+          <div class="form-group">
+            <label for="status" class="col-sm-2 control-label">
+              Status
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="status" name="status" placeholder="Status" class="form-control" value="<%= @reservation.status %>">
+            </div>
+          </div>
+
+          <!-- Label and input for review_score -->
+          <div class="form-group">
+            <label for="review_score" class="col-sm-2 control-label">
+              Review score
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="review_score" name="review_score" placeholder="Review score" class="form-control" value="<%= @reservation.review_score %>">
+            </div>
+          </div>
+
+          <!-- Label and input for profile_id -->
+          <div class="form-group">
+            <label for="profile_id" class="col-sm-2 control-label">
+              Profile
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="profile_id" name="profile_id" placeholder="Profile" class="form-control" value="<%= @reservation.profile_id %>">
+            </div>
+          </div>
+
+          <!-- Label and input for dish_id -->
+          <div class="form-group">
+            <label for="dish_id" class="col-sm-2 control-label">
+              Dish
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="dish_id" name="dish_id" placeholder="Dish" class="form-control" value="<%= @reservation.dish_id %>">
+            </div>
+          </div>
+
+          <!-- Label and input for review_comments -->
+          <div class="form-group">
+            <label for="review_comments" class="col-sm-2 control-label">
+              Review comments
+            </label>
+            <div class="col-sm-10">
+              <textarea id="review_comments" name="review_comments" placeholder="Review comments" class="form-control" rows="3"><%= @reservation.review_comments %></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-warning">
+                Update Reservation
+              </button>
+              or
+              <a href="/reservations/<%= @reservation.id %>">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- End responsive panel example -->

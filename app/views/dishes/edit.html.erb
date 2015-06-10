@@ -1,0 +1,152 @@
+<!-- Validation failure messages -->
+
+<% if @dish.errors.any? %>
+  <% @dish.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit Dish #<%= @dish.id %></h3>
+      </div>
+      <div class="panel-body">
+        <form action="/update_dish/<%= @dish.id %>" method="post" class="form-horizontal" enctype="multipart/form-data">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for profile_id -->
+          <div class="form-group">
+            <label for="profile_id" class="col-sm-2 control-label">
+              Host
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="profile_id" name="profile_id" placeholder="Profile" class="form-control" value="<%= @dish.profile_id %>">
+            </div>
+          </div>
+
+          <!-- Label and input for photo -->
+          <div class="form-group">
+            <label for="photo" class="col-sm-2 control-label">
+              Photo
+            </label>
+            <div class="col-sm-10">
+              <input type="file" id="photo" name="photo" placeholder="Photo" class="form-control" value="<%= @dish.photo %>">
+            </div>
+          </div>
+          
+          <!-- Label and input for cuisine_type -->
+          <div class="form-group">
+            <label for="cuisine_type" class="col-sm-2 control-label">
+              Cuisine type
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="cuisine_type" name="cuisine_type" placeholder="Cuisine type" class="form-control" value="<%= @dish.cuisine_type %>">
+            </div>
+          </div>
+
+          <!-- Label and input for dish_name -->
+          <div class="form-group">
+            <label for="dish_name" class="col-sm-2 control-label">
+              Dish name
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="dish_name" name="dish_name" placeholder="Dish name" class="form-control" value="<%= @dish.dish_name %>">
+            </div>
+          </div>
+          
+          <!-- Label and input for dish_description -->
+          <div class="form-group">
+            <label for="dish_description" class="col-sm-2 control-label">
+              Dish description
+            </label>
+            <div class="col-sm-10">
+              <textarea id="dish_description" name="dish_description" placeholder="Dish description" class="form-control" rows="3"><%= @dish.dish_description %></textarea>
+            </div>
+          </div>
+
+          <!-- Label and input for ingredients -->
+          <div class="form-group">
+            <label for="ingredients" class="col-sm-2 control-label">
+              Ingredients
+            </label>
+            <div class="col-sm-10">
+              <textarea id="ingredients" name="ingredients" placeholder="Ingredients" class="form-control" rows="3"><%= @dish.ingredients %></textarea>
+            </div>
+          </div>
+
+          <!-- Label and input for date_offered -->
+          <div class="form-group">
+            <label for="date_offered" class="col-sm-2 control-label">
+              Date offered
+            </label>
+            <div class="col-sm-10">
+            <div class='input-group date' id='datetimepicker1'>
+            <input type='text' class="form-control" name="date_offered" id="date_offered" value="<%= @dish.date_offered %>">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+            </div>
+          </div>
+          </div>
+
+          <!-- Label and input for max_guests -->
+          <div class="form-group">
+            <label for="max_guests" class="col-sm-2 control-label">
+              Max guests
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="max_guests" name="max_guests" placeholder="Max guests" class="form-control" value="<%= @dish.max_guests %>">
+            </div>
+          </div>
+
+          <!-- Label and input for price_offered -->
+          <div class="form-group">
+            <label for="price_offered" class="col-sm-2 control-label">
+              Price offered
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="price_offered" name="price_offered" placeholder="Price offered" class="form-control" value="<%= @dish.price_offered %>">
+            </div>
+          </div>
+      
+          <!-- Label and input for location -->
+          <div class="form-group">
+            <label for="location" class="col-sm-2 control-label">
+              Location
+            </label>
+            <div class="col-sm-10">
+              <textarea id="location" name="location" placeholder="Location" class="form-control" rows="3"><%= @dish.location %></textarea>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-warning">
+                Update Dish
+              </button>
+              or
+              <a href="/dishes/<%= @dish.id %>">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- End responsive panel example -->
+<script type="text/javascript">
+  $(function () {
+    $('#datetimepicker1').datetimepicker();
+  });
+</script>
