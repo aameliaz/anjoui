@@ -68,4 +68,8 @@ class ExploreController < ApplicationController
 
     redirect_to "/dishes", :notice => "Dish deleted."
   end
+
+   def confirmation
+    
+ end
 end

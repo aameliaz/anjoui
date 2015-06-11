@@ -32,13 +32,15 @@ Rails.application.routes.draw do
   get "/explore", :controller => "explore", :action => "index"
   get "/explore/:id", :controller => "explore", :action => "show"
 
+  get "/explore/:dish_id/confirmation", :controller => "explore", :action => "confirmation"
+
   #------------------------------
 
 
   # Routes for the Reservation resource:
   # CREATE
   get "/reservations/new", :controller => "reservations", :action => "new"
-  post "/create_reservation", :controller => "reservations", :action => "create"
+  post "/create_reservation", :controller => "reservations", :action => "create_review"
 
   # READ
   get "/reservations", :controller => "reservations", :action => "index"

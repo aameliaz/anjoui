@@ -37,7 +37,7 @@ class DishesController < ApplicationController
     @dish.cuisine_type = params[:cuisine_type]
     @dish.location = params[:location]
     @dish.dish_description = params[:dish_description]
-    @dish.fullname = params[:fullname]
+    @dish.fullname = params[:fullname ]
 
     if @dish.save
       redirect_to "/dishes", :notice => "Dish created successfully."

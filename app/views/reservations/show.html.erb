@@ -14,7 +14,7 @@
 
           <dt>Host's Name</dt>
           <dd><%= @reservation.dish.fullname %></dd>
-          
+
           <dt>Dish name</dt>
           <dd><%= @reservation.dish.dish_name %></dd>
 
@@ -34,10 +34,10 @@
           <dd><%= number_to_currency(@reservation.dish.price_offered, :unit => "$") %></dd>   
 
           <dt>Date</dt>
-          <dd><%= @reservation.dish.date_offered.strftime('%B %e, %Y at %l:%M%P %Z') %></dd>
+          <dd><%= @reservation.dish.date_offered.in_time_zone('Central Time (US & Canada)').strftime('%B %e, %Y at %l:%M%P %Z') %></dd>
 
-          <dt>Number of Guests</dt>
-          <dd><%= @reservation.dish.max_guests - 1 %></dd>
+          <dt>Available Seats</dt>
+          <dd><%= @reservation.dish.number_guests_left-1 %></dd>
 
           <dt>Location</dt>
           <dd><%= @reservation.dish.location %></dd>
@@ -49,18 +49,14 @@
                 <i class="fa fa-chevron-left"></i>
               </a>
 
-              <a href="/reservations/<%= @reservation.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-
               <a href="/delete_reservation/<%= @reservation.id %>" class="btn btn-danger" rel="nofollow">
                 <i class="fa fa-trash-o"></i>
               </a>
-         
+   <!--       
             </div>
             <br/>
             <a href="/reservations/new" class="btn btn-success btn-lg btn-block">Review</a>
-            
+             -->
           </div>
         </div>
       </div>

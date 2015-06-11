@@ -42,12 +42,10 @@
           <dd><%= dish.dish_description %></dd>
 
           <dt>Date offered</dt>
-          <dd><%= dish.date_offered.strftime('%B %e, %Y at %l:%M%P %Z') %></dd>
+          <dd><%= dish.date_offered.in_time_zone('Central Time (US & Canada)').strftime('%B %e, %Y at %l:%M%P %Z') %></dd>
 
           <dt>Price offered</dt>
           <dd><%= number_to_currency(dish.price_offered, :unit => "$") %></dd>   
-
-
 
         </dl>
         <div class="btn-group btn-group-justified">

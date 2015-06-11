@@ -30,7 +30,7 @@
           <dd><%= @dish.ingredients %></dd>
 
           <dt>Date offered</dt>
-          <dd><%= @dish.date_offered.strftime('%B %e, %Y at %l:%M%P %Z') %></dd>
+          <dd><%= @dish.date_offered.in_time_zone('Central Time (US & Canada)').strftime('%B %e, %Y at %l:%M%P %Z') %></dd>
 
           <dt>Max guests</dt>
           <dd><%= @dish.max_guests %></dd>

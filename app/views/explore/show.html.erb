@@ -15,7 +15,7 @@
 
             -->
             <dt>Host's name</dt>
-            <dd><%= dish.fullname %></dd>
+            <dd><%= @dish.fullname %></dd>
 
             <dt>Dish name</dt>
             <dd><%= @dish.dish_name %></dd>
@@ -33,7 +33,7 @@
             <dd><%= @dish.ingredients %></dd>
 
             <dt>Date offered</dt>
-            <dd><%= @dish.date_offered.strftime('%B %e, %Y at %l:%M%P %Z') %></dd>
+            <dd><%= @dish.date_offered.in_time_zone('Central Time (US & Canada)').strftime('%B %e, %Y at %l:%M%P %Z') %></dd>
 
             <dt>Max guests</dt>
             <dd><%= @dish.max_guests %></dd>
@@ -59,29 +59,33 @@
               </a> -->
 
               <!-- Dropdown and Reservation-->
-              <form action="/dishes/add/<%= @dish.id %>">
+
+<!-- 
+              <form action="/explore/<%= @dish.id %>/confirmation">
                 <div class="form-group">
-                <label for="guests" id="guests" name="guests" class="col-sm-4 control-label" value="<%= @dish.guests %>">Number of orders</label>
+                <label for="guests" name="guests" class="col-sm-4 control-label">Number of orders</label>
                   <div class="col-sm-4">
-                    <select class="form-control" id="guests">
-                      <% @dish.max_guests.times do |index| %>
-                      <option value="<%= index+1 %>"><%= index+1%></option>
+                  
+                  <select class="form-control" id="guests">
+                      <%= @dish.number_guests_left.times do |index| %>
+                      <option value="<%= @dish.guests %>"><%= index+1%></option>
                       <% end %>
                     </select>
-
                     <br/>
 
                   </div>
                 </div>
                 <input type="submit" value="Reserve" class="btn btn-success btn-group col-md-4">
-              </form>
+              </form> -->
+
+              <a href="/dishes/add/<%= @dish.id %>" class="btn btn-success btn-group btn-group-justified col-md-6">Reserve</a>
+            <br>
+<br>
             </dl>
             <div class="btn-group btn-group-justified">
               <a href="/explore" class="btn btn-primary">
                 <i class="fa fa-chevron-left"></i>
               </a>
-
-
 
             </div>
           </div>

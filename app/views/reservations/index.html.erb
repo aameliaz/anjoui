@@ -51,7 +51,7 @@
           <dd><%= number_to_currency(reservation.dish.price_offered, :unit => "$") %></dd>   
 
           <dt>Date</dt>
-          <dd><%= reservation.dish.date_offered.strftime('%B %e, %Y at %l:%M%P %Z') %></dd>
+          <dd><%= reservation.dish.date_offered.in_time_zone('Central Time (US & Canada)').strftime('%B %e, %Y at %l:%M%P %Z') %></dd>
 
           <dt>Location</dt>
           <dd><%= reservation.dish.location %></dd>
@@ -63,10 +63,6 @@
             <i class="fa fa-search-plus"></i>
           </a>
           
-          <a href="/reservations/<%= reservation.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-
           <a href="/delete_reservation/<%= reservation.id %>" class="btn btn-danger" rel="nofollow">
             <i class="fa fa-trash-o"></i>
           </a>
