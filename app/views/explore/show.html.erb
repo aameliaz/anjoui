@@ -68,7 +68,7 @@
                   
                   <select class="form-control" id="guests">
                       <%= @dish.number_guests_left.times do |index| %>
-                      <option value="<%= @dish.guests %>"><%= index+1%></option>
+                      <option value="<%= index+1 %>"><%= index+1%></option>
                       <% end %>
                     </select>
                     <br/>
