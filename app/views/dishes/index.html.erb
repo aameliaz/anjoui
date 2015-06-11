@@ -27,6 +27,9 @@
       <div class="panel-body">
         <dl>
 
+          <dt>Host's name</dt>
+          <dd><%= dish.fullname %></dd>
+
           <dt>Dish name</dt>
           <dd><%= dish.dish_name %></dd>
 
@@ -34,7 +37,6 @@
 
           <dt>Cuisine type</dt>
           <dd><%= dish.cuisine_type %></dd>
-
 
           <dt>Dish description</dt>
           <dd><%= dish.dish_description %></dd>
@@ -44,6 +46,8 @@
 
           <dt>Price offered</dt>
           <dd><%= number_to_currency(dish.price_offered, :unit => "$") %></dd>   
+
+
 
         </dl>
         <div class="btn-group btn-group-justified">

@@ -38,6 +38,7 @@ end
     @reservation.profile_id = current_user.id
     @reservation.dish_id = params[:dish_id]
     @reservation.review_comments = params[:review_comments]
+    @dish.max_guests = @dish.max_guests - @dish.number_guests_left
     # @reservation.dish.number_guests_left = reservation.dish.number_guests_left-1
 
     if @reservation.save

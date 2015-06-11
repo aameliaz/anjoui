@@ -32,11 +32,12 @@ class DishesController < ApplicationController
     @dish.date_offered = Chronic.parse(params[:date_offered])
     @dish.price_offered = params[:price_offered]
     @dish.max_guests = params[:max_guests]
-    @dish.number_guests_left = params[:number_guests_left]
+    @dish.number_guests_left = @dish.max_guests
     @dish.profile_id = current_user.id
     @dish.cuisine_type = params[:cuisine_type]
     @dish.location = params[:location]
     @dish.dish_description = params[:dish_description]
+    @dish.fullname = params[:fullname]
 
     if @dish.save
       redirect_to "/dishes", :notice => "Dish created successfully."
@@ -57,12 +58,18 @@ class DishesController < ApplicationController
     @dish.dish_name = params[:dish_name]
     @dish.date_offered = Chronic.parse(params[:date_offered])
     @dish.price_offered = params[:price_offered]
-    @dish.max_guests = params[:max_guests]
-    @dish.number_guests_left = params[:number_guests_left]
-    @dish.profile_id = current_user.id
+    # if params[:max_guests] < @dish.number_guests_left
+    #   redirect_to "/dishes/<%= @dish.id %>/edit", :notice => "Note: Others have reserved your dish already, your new availability is below what you previously offered, we will notify other guests"
+    # else
+    #   @dish.max_guests = params[:max_guests]
+    # end
+    
+    #@dish.number_guests_left = @dish.max_guests
+    # @dish.profile_id = current_user.id
     @dish.cuisine_type = params[:cuisine_type]
     @dish.location = params[:location]
     @dish.dish_description = params[:dish_description]
+    @dish.fullname = params[:fullname]
 
     if @dish.save
       redirect_to "/dishes", :notice => "Dish updated successfully."
